@@ -12,22 +12,14 @@ $(document).ready(function() {
  }).done(function (data) {//.done is the same as success
   console.log('getting accolades', data);
   shoutsArray=data;
-  //data.forEach(function (elem) {
-  // shoutsArray.push(elem);
-  // console.log("ShoutsArray: ", shoutsArray);
-  // console.log(elem.name);
-  // console.log(elem.shout);
-   //addShout(elem);
-   //$('#panel').fadeIn("slow");
-   //i++;
-   //return shoutsArray;
-   //addShout(elem);
+  $('#panel').hide();
   }).fail(function (jqXHR, textStatus, errorThrown) {
    console.log('error: ', errorThrown);//use a comma if you want the object data to show, otherwise it will just log Object
   }).always(function () {
    console.log("complete");
    console.log(shoutsArray);
  $(document ).click(function() {
+  $('#panel').hide();
   addShout(shoutsArray);
   });
 
@@ -36,9 +28,10 @@ $(document).ready(function() {
 var i=0;
  function addShout(array) {
    console.log("current shout: ", shoutsArray[i]);
+   $('#panel').fadeIn(800);
    $('#name').text(shoutsArray[i].name);
    $('#shout').text(shoutsArray[i].shout);
-   $('#panel').fadeOut(600);
+   $('#panel').fadeIn(800);
    i++;
   }
  });
