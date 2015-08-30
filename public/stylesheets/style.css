@@ -1,0 +1,13 @@
+body {
+  margin: 50px auto;
+  width: 600px;
+}
+#name {
+  font-weight: bold;
+  font-size: 160%;
+  text-align: center;
+
+}
+.hidden {
+  display: none;
+}
