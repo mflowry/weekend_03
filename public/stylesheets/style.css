@@ -8,6 +8,12 @@ body {
   text-align: center;
 
 }
+#prev {
+  float: left;
+}
+#next {
+  float: right;
+}
 .hidden {
   display: none;
 }

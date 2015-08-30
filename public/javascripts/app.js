@@ -1,8 +1,8 @@
 var shoutsArray = [];
-var i=0;
+
 
 $(document).ready(function() {
-
+ var i =0;
 
 //access the db of shout-outs - make an AJAX call
  $.ajax({
@@ -11,30 +11,41 @@ $(document).ready(function() {
   url: '/shout_outs'
  }).done(function (data) {//.done is the same as success
   console.log('getting accolades', data);
-  shoutsArray=data;
+  shoutsArray = data;
   $('#panel').hide();
-  }).fail(function (jqXHR, textStatus, errorThrown) {
-   console.log('error: ', errorThrown);//use a comma if you want the object data to show, otherwise it will just log Object
-  }).always(function () {
-   console.log("complete");
-   console.log(shoutsArray);
- $(document ).click(function() {
-  $('#panel').hide();
-  addShout(shoutsArray);
+ }).fail(function (jqXHR, textStatus, errorThrown) {
+  console.log('error: ', errorThrown);//use a comma if you want the object data to show, otherwise it will just log Object
+ }).always(function () {
+  console.log("complete");
+  console.log(shoutsArray);
+  addShout(shoutsArray, i);
+
+  $('#next').click(function () {
+   $('#panel').hide();
+   addShout(shoutsArray, ++i);
+
+  });
+  $('#prev').click(function () {
+   $('#panel').hide();
+   addShout(shoutsArray, --i);
+  });
+   });
+
+ function addShout(array, i) {
+  console.log("current shout: ", shoutsArray[i]);
+  console.log(i);
+  $('#panel').fadeIn(800);
+  $('#name').text(shoutsArray[i].name);
+  $('#shout').text(shoutsArray[i].shout);
+  $('#panel').fadeIn(800);
+ }
+
   });
 
- });
 
-var i=0;
- function addShout(array) {
-   console.log("current shout: ", shoutsArray[i]);
-   $('#panel').fadeIn(800);
-   $('#name').text(shoutsArray[i].name);
-   $('#shout').text(shoutsArray[i].shout);
-   $('#panel').fadeIn(800);
-   i++;
-  }
- });
+
+
+
 
  //function addShout(elem) {
 
